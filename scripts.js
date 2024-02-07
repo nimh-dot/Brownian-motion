@@ -1,16 +1,20 @@
 const can = document.querySelector('canvas');
-let width = window.innerWidth;
-let height = window.innerHeight;
-can.width = window.innerWidth;
+let width = window.innerWidth*0.8;
+let height = window.innerHeight*0.8;
+can.width = width;
 can.height = height;
 
 const canvas = can.getContext("2d");
 
-let randomInt = (min, max) => {
+let getRandomInt = (min, max) => {
     return ~~((max - min + 1)*Math.random()) + min;
 }
 
-let radius = 3
+let getColor = (value) => {
+    return `rgb(${~~(value*51)}, ${255 - ~~(value*51)}, 0)`;
+}
+
+let radius = 15
 
 // item ball
 class Circle {
@@ -20,12 +24,13 @@ class Circle {
         this.radius = radius;
         this.dx = dx;
         this.dy = dy;
+        this.color = getColor(Math.max(Math.abs(dx), Math.abs(dy)));
     }
     draw() {
         canvas.beginPath();
-        canvas.arc(this.x, this.y, 2*this.radius + 1, 2*Math.PI, false);
-        canvas.strokeStyle ="red";
-        canvas.stroke();
+        canvas.arc(this.x, this.y, this.radius + 1, 2*Math.PI, false);
+        canvas.fillStyle = this.color;
+        canvas.fill();
         
         this.update();
     }
@@ -33,7 +38,7 @@ class Circle {
         if (this.x + radius > width || this.x - radius < 0) {
             this.dx = -this.dx;
         }
-        if (this.y > height || this.y < 0) {
+        if (this.y + radius> height || this.y - radius < 0) {
             this.dy = -this.dy;
         }
         this.x += this.dx;
@@ -44,8 +49,13 @@ class Circle {
 // create balls
 let ballList = [];
 
-for (let i=0; i<25; i++){
-    ballList[i] = new Circle(randomInt(radius, width), randomInt(radius, height), radius, randomInt(1, 15), randomInt(1, 15));
+for (let i=0; i<55; i++){
+    ballList[i] = new Circle(
+        getRandomInt(radius, width - radius), 
+        getRandomInt(radius, height - radius), 
+        radius, 
+        getRandomInt(1, 5), 
+        getRandomInt(1, 5));
 }
 
 // animate balls

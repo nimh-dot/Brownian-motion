@@ -11,7 +11,7 @@ html {
     margin: 0;
   }
   canvas {
-    margin: 10px;
+    margin: 0 auto;
     border: 1px solid #1b1b1b;
   }
   h2 {
