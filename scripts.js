@@ -1,20 +1,23 @@
 const can = document.querySelector('canvas');
-let width = window.innerWidth*0.8;
-let height = window.innerHeight*0.8;
+let width = window.innerWidth*0.7;
+let height = window.innerHeight*0.7;
 can.width = width;
 can.height = height;
 
 const canvas = can.getContext("2d");
+
+const speedButton = document.getElementById('speed'); 
+let radiusButton = document.getElementById('radius'); 
 
 let getRandomInt = (min, max) => {
     return ~~((max - min + 1)*Math.random()) + min;
 }
 
 let getColor = (value) => {
-    return `rgb(${~~(value*51)}, ${255 - ~~(value*51)}, 0)`;
+    return `rgb(${~~(value*25)}, ${255 - ~~(value*25)}, 0)`;
 }
 
-let radius = 15
+let radius = 10;
 
 // item ball
 class Circle {
@@ -22,8 +25,10 @@ class Circle {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.dx = dx;
-        this.dy = dy;
+        this.baseDx = dx;
+        this.baseDy = dy;
+        this.dx = this.baseDx;
+        this.dy = this.baseDy;
         this.color = getColor(Math.max(Math.abs(dx), Math.abs(dy)));
     }
     draw() {
@@ -49,13 +54,13 @@ class Circle {
 // create balls
 let ballList = [];
 
-for (let i=0; i<55; i++){
+for (let i=0; i<15; i++){
     ballList[i] = new Circle(
         getRandomInt(radius, width - radius), 
         getRandomInt(radius, height - radius), 
         radius, 
-        getRandomInt(1, 5), 
-        getRandomInt(1, 5));
+        getRandomInt(1, 10), 
+        getRandomInt(1, 10));
 }
 
 // animate balls
@@ -68,3 +73,18 @@ const animate = () => {
 }
 
 animate();
+
+const changeRadius = () => {
+    const newRadius = Number(radiusButton.value);
+    for (let ball of ballList) {
+        ball.radius = newRadius;
+    }
+}
+
+const changeSpeed = () => {
+    const newSpeed = Number(speedButton.value);
+    for (let ball of ballList) {
+        ball.dx = ball.baseDx*(newSpeed/10);
+        ball.dy = ball.baseDy*(newSpeed/10);
+    }
+}

@@ -7,7 +7,48 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas></canvas>
+  <div class="main-wrapper">
+    <form class="catalog-filter" action="https://echo.htmlacademy.ru/" method="get">
+      <fieldset class="catalog-filter-group">
+        <legend class="catalog-filter-title">Max Speed</legend>
+        <div class="range">
+            <div class="range-scale">
+                <div class="range-bar" style="left: 0px; width: 111px">
+                    <input class="guessSubmit2" id="speed" type="range" min="1" max="20" step="1" value="10" oninput="changeSpeed()">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+      <fieldset class="catalog-filter-group">
+          <legend class="catalog-filter-title">Ball Radius</legend>
+          <div class="range">
+              <div class="range-scale">
+                  <div class="range-bar" style="left: 0px; width: 111px">
+                      <input class="guessSubmit2" id="radius" type="range" min="1" max="20" step="1" value="10" oninput="changeRadius()">
+                  </div>
+              </div>
+          </div>
+      </fieldset>
+      <fieldset class="catalog-filter-group">
+          <legend class="catalog-filter-title">Color</legend>
+          <div class="control-input-wrapper">
+              <input class="visually-hidden" type="radio" value="false" name="random" id="random-color-yes" checked="">
+              <span class="control-random-color"></span>
+              <label class="control" for="random-color-yes">
+                  <span class="control-label">Gradient</span>
+              </label>
+          </div>  
+          <div class="control-input-wrapper">
+              <input class="visually-hidden" type="radio" value="false" name="gradient" id="gradient-no">
+              <span class="control-bluetooth"></span>
+              <label class="control" for="gradient-no">
+                  <span class="control-label">Random</span>
+              </label>
+          </div>  
+      </fieldset>
+    </form>
+    <canvas></canvas>
+  </div>
   <script src='./scripts.js'></script>
 </body>
 </html>
