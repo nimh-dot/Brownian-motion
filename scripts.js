@@ -84,7 +84,7 @@ const changeRadius = () => {
 const changeSpeed = () => {
     const newSpeed = Number(speedButton.value);
     for (let ball of ballList) {
-        ball.dx = ball.baseDx*(newSpeed/10);
-        ball.dy = ball.baseDy*(newSpeed/10);
+        ball.dx = Math.sign(ball.dx)*ball.baseDx*(newSpeed/10);
+        ball.dy = Math.sign(ball.dy)*ball.baseDy*(newSpeed/10);
     }
 }
