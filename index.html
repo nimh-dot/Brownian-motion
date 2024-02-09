@@ -2,53 +2,63 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Canvas + Классы в JS</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Canvas + Классы в JS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="main-wrapper">
-    <form class="catalog-filter" action="https://echo.htmlacademy.ru/" method="get">
-      <fieldset class="catalog-filter-group">
-        <legend class="catalog-filter-title">Speed</legend>
-        <div class="range">
-            <div class="range-scale">
-                <div class="range-bar">
-                    <input class="guessSubmit2" id="speed" type="range" min="1" max="20" step="1" value="10" oninput="changeSpeed()">
+    <div class="main-wrapper">
+        <form class="catalog-filter" action="https://echo.htmlacademy.ru/" method="get">
+            <fieldset class="catalog-filter-group">
+                <legend class="catalog-filter-title">Number of Balls</legend>
+                <div class="range">
+                    <div class="range-scale">
+                        <div class="range-bar">
+                            <input id="number" type="range" min="1" max="20" step="1" value="10" oninput="changeNumber()">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </fieldset>
-      <fieldset class="catalog-filter-group">
-          <legend class="catalog-filter-title">Ball Radius</legend>
-          <div class="range">
-              <div class="range-scale">
-                  <div class="range-bar">
-                      <input class="guessSubmit2" id="radius" type="range" min="1" max="20" step="1" value="10" oninput="changeRadius()">
-                  </div>
-              </div>
-          </div>
-      </fieldset>
-      <fieldset class="catalog-filter-group">
-          <legend class="catalog-filter-title">Color</legend>
-          <div class="control-input-wrapper">
-              <input class="visually-hidden" type="radio" name="color" id="random">
-              <span class="control-random-color"></span>
-              <label class="control" for="random-color-yes">
-                  <span class="control-label">Random</span>
-              </label>
-          </div>  
-          <div class="control-input-wrapper">
-              <input class="visually-hidden" type="radio" name="color" id="gradient" checked="">
-              <span class="control-bluetooth"></span>
-              <label class="control" for="gradient-no">
-                  <span class="control-label">Gradient</span>
-              </label>
-          </div>  
-      </fieldset>
-    </form>
+            </fieldset>
+            <fieldset class="catalog-filter-group">
+                <legend class="catalog-filter-title">Speed</legend>
+                <div class="range">
+                    <div class="range-scale">
+                        <div class="range-bar">
+                            <input id="speed" type="range" min="1" max="20" step="1" value="10" oninput="changeSpeed()">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="catalog-filter-group">
+                <legend class="catalog-filter-title">Ball Radius</legend>
+                <div class="range">
+                    <div class="range-scale">
+                        <div class="range-bar">
+                            <input id="radius" type="range" min="1" max="20" step="1" value="10" oninput="changeRadius()">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="catalog-filter-group">
+                <legend class="catalog-filter-title">Color</legend>
+                <div class="control-input-wrapper">
+                    <input class="visually-hidden" type="radio" name="color" id="random">
+                    <span class="control-random-color"></span>
+                    <label class="control" for="random-color-yes">
+                        <span class="control-label">Random</span>
+                    </label>
+                </div>  
+                <div class="control-input-wrapper">
+                    <input class="visually-hidden" type="radio" name="color" id="gradient" checked="">
+                    <span class="control-bluetooth"></span>
+                    <label class="control" for="gradient-no">
+                        <span class="control-label">Gradient</span>
+                    </label>
+                </div>  
+            </fieldset>
+        </form>
     <div id="canvas-wrapper"></div>
-  </div>
-  <script src='./scripts.js'></script>
+    </div>
+    <script src='./scripts.js'></script>
 </body>
 </html>

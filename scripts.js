@@ -11,9 +11,13 @@ let getColor = (value) => {
 
 const speedRange = document.getElementById('speed'); 
 const radiusRange = document.getElementById('radius'); 
-// const ballCountRange = document.getElementById('number'); 
+const numberOfBallsRange = document.getElementById('number'); 
 const randomColorInput = document.getElementById('random'); 
 const gradientColorInput = document.getElementById('gradient'); 
+
+let radius = Number(radiusRange.value);
+let numberOfBalls = Number(numberOfBallsRange.value);
+
 
 class Canvas {
     constructor (parentElement, width, height) {
@@ -40,8 +44,6 @@ class Canvas {
 
 const canvasWrapper = document.getElementById('canvas-wrapper'); 
 const canvas = new Canvas(canvasWrapper, width, height);
-
-let radius = 10;
 
 
 class Ball {
@@ -70,7 +72,7 @@ canvas.draw(ball1);
 // create balls
 let ballList = [];
 
-for (let i=0; i<5; i++){
+for (let i=0; i<30; i++){
     ballList[i] = new Ball (
         getRandomInt(radius, width - radius), 
         getRandomInt(radius, height - radius), 
@@ -83,13 +85,17 @@ for (let i=0; i<5; i++){
 const animate = () => {
     requestAnimationFrame(animate);
     canvas.clear();
-    for (let ball of ballList) {
-        ball.update();
-        canvas.draw(ball);
+    for (let i = 0; i <= numberOfBalls; i++ ) {
+        ballList[i].update();
+        canvas.draw(ballList[i]);
     }
 }
 
 animate();
+
+const changeNumber = () => {
+    numberOfBalls = Number(numberOfBallsRange.value);
+}
 
 const changeRadius = () => {
     const newRadius = Number(radiusRange.value);
