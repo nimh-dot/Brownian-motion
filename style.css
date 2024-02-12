@@ -25,21 +25,32 @@ h2 {
 }
 
 .main-wrapper {
+  margin: 20px;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
-.catalog-filter {
+.canvas-filter {
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.catalog-filter-group {
-  margin-bottom: 60px;
+.canvas-filter-group {
+  margin-bottom: 20px;
 }
 
-.catalog-filter-title {
+.canvas-filter-title {
   text-align: center;
+}
+
+.canvas-input-wrapper:not(:last-child) {
+  margin-bottom: 20px;
 }

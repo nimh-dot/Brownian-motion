@@ -3,14 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Canvas + Классы в JS</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="main-wrapper">
-        <form class="catalog-filter" action="https://echo.htmlacademy.ru/" method="get">
-            <fieldset class="catalog-filter-group">
-                <legend class="catalog-filter-title">Number of Balls</legend>
+        <div id="canvas-wrapper"></div>
+        <form class="canvas-filter" action="https://echo.htmlacademy.ru/" method="get">
+            <fieldset class="canvas-filter-group">
+                <legend class="canvas-filter-title">Number of Balls</legend>
                 <div class="range">
                     <div class="range-scale">
                         <div class="range-bar">
@@ -19,8 +21,8 @@
                     </div>
                 </div>
             </fieldset>
-            <fieldset class="catalog-filter-group">
-                <legend class="catalog-filter-title">Speed</legend>
+            <fieldset class="canvas-filter-group">
+                <legend class="canvas-filter-title">Speed</legend>
                 <div class="range">
                     <div class="range-scale">
                         <div class="range-bar">
@@ -29,8 +31,8 @@
                     </div>
                 </div>
             </fieldset>
-            <fieldset class="catalog-filter-group">
-                <legend class="catalog-filter-title">Ball Radius</legend>
+            <fieldset class="canvas-filter-group">
+                <legend class="canvas-filter-title">Ball Radius</legend>
                 <div class="range">
                     <div class="range-scale">
                         <div class="range-bar">
@@ -39,16 +41,16 @@
                     </div>
                 </div>
             </fieldset>
-            <fieldset class="catalog-filter-group">
-                <legend class="catalog-filter-title">Color</legend>
-                <div class="control-input-wrapper">
+            <fieldset class="canvas-filter-group">
+                <legend class="canvas-filter-title">Color</legend>
+                <div class="canvas-input-wrapper">
                     <input class="visually-hidden" type="radio" name="color" id="random">
                     <span class="control-random-color"></span>
                     <label class="control" for="random-color-yes">
                         <span class="control-label">Random</span>
                     </label>
                 </div>  
-                <div class="control-input-wrapper">
+                <div class="canvas-input-wrapper">
                     <input class="visually-hidden" type="radio" name="color" id="gradient" checked="">
                     <span class="control-bluetooth"></span>
                     <label class="control" for="gradient-no">
@@ -57,7 +59,6 @@
                 </div>  
             </fieldset>
         </form>
-    <div id="canvas-wrapper"></div>
     </div>
     <script src="./scripts.js" type="module"></script>
 </body>
