@@ -38,6 +38,11 @@ const animate = () => {
     canvas.clear();
     for (let i = 0; i <= numberOfBalls; i++ ) {
         ballList[i].update(window.innerWidth <= 768 ? window.innerWidth - 40 : window.innerWidth*0.7, window.innerHeight*0.5);
+        for (let j=0; j <= numberOfBalls; j++) {
+            if (i !== j) {
+                if (ballList[i].isCollision(ballList[j].position.x, ballList[j].position.y, radius)) console.log('collision detected')
+            }
+        }
         canvas.draw(ballList[i]);
     }
 }

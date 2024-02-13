@@ -1,6 +1,5 @@
 export class Canvas {
     constructor (parentElement) {
-        console.log(window.innerWidth*0.5)
         this.ctx = document.createElement('canvas');
         this.ctx.width = window.innerWidth <= 768 ? window.innerWidth - 40 : window.innerWidth*0.7;
         this.ctx.height = window.innerHeight*0.5;
