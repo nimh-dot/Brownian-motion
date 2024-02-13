@@ -21,7 +21,13 @@ export class Ball {
                             y: this.position.y + this.currentSpeed.dy
                         };
     }
-    isCollision(x, y, r) {
-        return r+this.radius > Math.sqrt(Math.pow(x-this.position.x, 2)+Math.pow(y-this.position.y, 2))  
+
+    checkAndResolve(ball) {
+        if (Math.abs(ball.position.x - this.position.x) < ball.radius + this.radius &&
+            Math.abs(ball.position.y - this.position.y) < ball.radius + this.radius) {
+                const tempSpeed = ball.currentSpeed;
+                ball.currentSpeed = this.currentSpeed;
+                this.currentSpeed = tempSpeed;
+        }
     }
 }

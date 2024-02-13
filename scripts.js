@@ -3,8 +3,6 @@ import { changeRadius, changeSpeed, setRandomColor, setGradientColor} from './co
 import { Canvas } from './Canvas.js';
 import { Ball } from './Ball.js';
 
-console.log(window.innerWidth*0.5);
-
 document.getElementById('speed').addEventListener('input', () => changeSpeed(ballList, gradientColorInput.checked));
 document.getElementById('radius').addEventListener('input', () => changeRadius(ballList));
 document.getElementById('number').addEventListener('input', () => numberOfBalls = Number(numberOfBallsRange.value));
@@ -23,7 +21,7 @@ const canvas = new Canvas(canvasWrapper);
 
 // create balls
 let ballList = [];
-for (let i=0; i<30; i++){
+for (let i=0; i<20; i++){
     ballList[i] = new Ball (
         getRandomInt(radius, window.innerWidth*0.5 - radius), 
         getRandomInt(radius, window.innerHeight*0.5 - radius), 
@@ -39,9 +37,7 @@ const animate = () => {
     for (let i = 0; i <= numberOfBalls; i++ ) {
         ballList[i].update(window.innerWidth <= 768 ? window.innerWidth - 40 : window.innerWidth*0.7, window.innerHeight*0.5);
         for (let j=0; j <= numberOfBalls; j++) {
-            if (i !== j) {
-                if (ballList[i].isCollision(ballList[j].position.x, ballList[j].position.y, radius)) console.log('collision detected')
-            }
+            if (i !== j) ballList[i].checkAndResolve(ballList[j])
         }
         canvas.draw(ballList[i]);
     }
