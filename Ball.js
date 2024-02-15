@@ -1,4 +1,4 @@
-import { getColor } from "./utils.js";
+import { getColor, getRandomInt } from "./utils.js";
 
 export class Ball {
     constructor (x, y, radius, dx, dy) {
@@ -28,6 +28,9 @@ export class Ball {
                 const tempSpeed = ball.currentSpeed;
                 ball.currentSpeed = this.currentSpeed;
                 this.currentSpeed = tempSpeed;
+                
+                this.color = `rgb(${getRandomInt(0, 255)}, ${getRandomInt(0, 255)}, ${getRandomInt(0, 255)})`;
+                ball.color = `rgb(${getRandomInt(0, 255)}, ${getRandomInt(0, 255)}, ${getRandomInt(0, 255)})`;
         }
     }
 }

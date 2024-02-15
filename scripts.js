@@ -1,5 +1,5 @@
 import { getRandomInt } from './utils.js';
-import { changeRadius, changeSpeed, setRandomColor, setGradientColor} from './control.js';
+import { changeRadius, changeSpeed, setRandomColor, setGradientColor } from './control.js';
 import { Canvas } from './Canvas.js';
 import { Ball } from './Ball.js';
 
@@ -9,24 +9,24 @@ document.getElementById('number').addEventListener('input', () => numberOfBalls 
 document.getElementById('random').addEventListener('click', () => setRandomColor(ballList));
 document.getElementById('gradient').addEventListener('click', () => setGradientColor(ballList));
 
-const radiusRange = document.getElementById('radius'); 
-const numberOfBallsRange = document.getElementById('number'); 
-const gradientColorInput = document.getElementById('gradient'); 
+const radiusRange = document.getElementById('radius');
+const numberOfBallsRange = document.getElementById('number');
+const gradientColorInput = document.getElementById('gradient');
 
 let radius = Number(radiusRange.value);
 let numberOfBalls = Number(numberOfBallsRange.value);
 
-const canvasWrapper = document.getElementById('canvas-wrapper'); 
+const canvasWrapper = document.getElementById('canvas-wrapper');
 const canvas = new Canvas(canvasWrapper);
 
 // create balls
 let ballList = [];
-for (let i=0; i<20; i++){
-    ballList[i] = new Ball (
-        getRandomInt(radius, window.innerWidth*0.5 - radius), 
-        getRandomInt(radius, window.innerHeight*0.5 - radius), 
-        radius, 
-        getRandomInt(1, 6), 
+for (let i = 0; i < 20; i++) {
+    ballList[i] = new Ball(
+        getRandomInt(radius, window.innerWidth * 0.5 - radius),
+        getRandomInt(radius, window.innerHeight * 0.5 - radius),
+        radius,
+        getRandomInt(1, 6),
         getRandomInt(1, 6));
 }
 
@@ -34,9 +34,9 @@ for (let i=0; i<20; i++){
 const animate = () => {
     requestAnimationFrame(animate);
     canvas.clear();
-    for (let i = 0; i <= numberOfBalls; i++ ) {
-        ballList[i].update(window.innerWidth <= 768 ? window.innerWidth - 40 : window.innerWidth*0.7, window.innerHeight*0.5);
-        for (let j=0; j <= numberOfBalls; j++) {
+    for (let i = 0; i <= numberOfBalls; i++) {
+        ballList[i].update(window.innerWidth <= 768 ? window.innerWidth - 40 : window.innerWidth * 0.7, window.innerHeight * 0.5);
+        for (let j = 0; j <= numberOfBalls; j++) {
             if (i !== j) ballList[i].checkAndResolve(ballList[j])
         }
         canvas.draw(ballList[i]);
@@ -47,5 +47,5 @@ animate();
 
 // resize window
 window.addEventListener('resize', () => {
-    canvas.resize(window.innerWidth <= 768 ? window.innerWidth - 40 : window.innerWidth*0.7, window.innerHeight*0.5);
+    canvas.resize(window.innerWidth <= 768 ? window.innerWidth - 40 : window.innerWidth * 0.7, window.innerHeight * 0.5);
 })
